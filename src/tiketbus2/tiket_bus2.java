@@ -5,6 +5,8 @@
  */
 package tiketbus2;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Andhea
@@ -15,7 +17,19 @@ public class tiket_bus2 extends javax.swing.JFrame {
      * Creates new form tiket_bus2
      */
     public tiket_bus2() {
+        double hasil, u1, u2, u3, u4;
         initComponents();
+    }
+    public double hitungtiket(double u3, double u4) {
+        double hasil = u3 / u4;
+        tiket.setText(Double.toString(hasil));
+        return hasil;
+    }
+    
+    public double hitung(double u1, double u2) {
+        double hasil = u1*u2;
+        Total.setText(Double.toString(hasil));
+        return hasil;
     }
 
     /**
@@ -44,14 +58,39 @@ public class tiket_bus2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Bandung");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Semarang");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Yogyakarta");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Malang");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Surabaya");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Jumlah Tiket");
 
@@ -60,6 +99,33 @@ public class tiket_bus2 extends javax.swing.JFrame {
         jLabel3.setText("Harga");
 
         clear.setText("Clear");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+
+        tiket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiketActionPerformed(evt);
+            }
+        });
+        tiket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tiketKeyTyped(evt);
+            }
+        });
+
+        Total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TotalActionPerformed(evt);
+            }
+        });
+        Total.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TotalKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,6 +205,74 @@ public class tiket_bus2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiketActionPerformed
+        // TODO add your handling code here:
+        double u1 = Double.parseDouble(tiket.getText());
+        double u2 = Double.parseDouble(hrgpertkt.getText());
+//        int hasil = u1 / u2;
+//        liter.setText(Integer.toString(hasil));
+        hitung(u1,u2);
+    }//GEN-LAST:event_tiketActionPerformed
+
+    private void TotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalActionPerformed
+        // TODO add your handling code here:
+        double u3 = Double.parseDouble(Total.getText());
+        double u4 = Double.parseDouble(hrgpertkt.getText());
+//        int hasil = u1 / u2;
+//        liter.setText(Integer.toString(hasil));
+        hitungtiket(u3,u4);
+    }//GEN-LAST:event_TotalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        hrgpertkt.setText("75000");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        hrgpertkt.setText("120000");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        hrgpertkt.setText("135000");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        hrgpertkt.setText("260000");
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        hrgpertkt.setText("230000");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        // TODO add your handling code here:
+        tiket.setText("");
+        Total.setText("");
+        hrgpertkt.setText("");
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void tiketKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tiketKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+        if (!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE)))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_tiketKeyTyped
+
+    private void TotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+        if (!(((karakter >= '.')&&(karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE)))) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_TotalKeyTyped
 
     /**
      * @param args the command line arguments
